@@ -19,11 +19,11 @@ Article.prototype.toHtml = function() {
   var compTemp = Handlebars.compile(templateScript);
   var context = {
     'Title' : this.title,
-    'Author.Name' : this.author,
+    'AuthorName' : this.author,
     'data': this.category,
     'link': this.authorUrl,
-    'bodyContent' : this.body,
-    'Publish.Time' : this.daysAgo
+    'bodyContent' : this.body
+    //'PublishTime' : this.daysAgo
   }
 
 
@@ -33,6 +33,7 @@ Article.prototype.toHtml = function() {
   //   For example, you might want to display how old a post is, or say "(draft)" if it has no publication date:
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)';
+  context.PublishTime = this.publishStatus;
 
   // TODO: Use the function that Handlebars gave you to return your filled-in html template for THIS article.
   var compiled = compTemp(context);

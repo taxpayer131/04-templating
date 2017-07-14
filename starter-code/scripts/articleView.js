@@ -57,6 +57,7 @@ articleView.handleMainNav = function() {
 };
 
 articleView.setTeasers = function() {
+  console.log("FIRE!");
   $('.article-body *:nth-of-type(n+2)').hide();
   $('article').on('click', 'a.read-on', function(e) {
     e.preventDefault();
